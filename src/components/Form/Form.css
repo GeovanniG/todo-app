@@ -1,0 +1,11 @@
+.container {
+    min-height: 100vh;
+}
+
+.btn-group {
+    width: 100%; 
+}
+
+.btn-group > .btn {
+    flex: none;
+}
