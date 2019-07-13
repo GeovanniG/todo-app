@@ -10,7 +10,8 @@ const userRouter = require('./routers/user');
 const todoRouter = require('./routers/todo');
 
 const viewsPath = path.join(__dirname, './views');
-const publicDirectoryPath = path.join(__dirname, '../public');
+const publicDirectoryPath = path.join(__dirname, '../../public');
+const indexDirectoryPath = path.join(__dirname, '../../build', 'index.html');
 const port = process.env.PORT;
 
 // Middleware
@@ -27,6 +28,10 @@ app.use(todoRouter);
 app.use(express.static(publicDirectoryPath));
 app.set('views', viewsPath);
 app.set('view engine', 'ejs');
+
+app.get('/*', function (req, res) {
+    res.sendFile(indexDirectoryPath);
+  });
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
